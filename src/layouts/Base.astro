@@ -1,0 +1,49 @@
+---
+// The base layout wraps every page: it sets up the <head>, the site header
+// (with a link back home) and the footer. Individual pages fill in the
+// middle via <slot />.
+import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { title, description = SITE_DESCRIPTION } = Astro.props;
+const pageTitle = title ? `${title} — ${SITE_TITLE}` : SITE_TITLE;
+
+// import.meta.env.BASE_URL is the "/theskywardsignal" base. We strip any
+// trailing slash and add exactly one, so links work whether the site is served
+// from a sub-folder or the domain root.
+const home = import.meta.env.BASE_URL.replace(/\/$/, '') + '/';
+const year = new Date().getFullYear();
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href={`${home}favicon.svg`} />
+  </head>
+  <body>
+    <div class="wrap">
+      <header class="site-header">
+        <h1 class="site-title"><a href={home}>{SITE_TITLE}</a></h1>
+        <p class="site-tagline">{SITE_DESCRIPTION}</p>
+      </header>
+
+      <main>
+        <slot />
+      </main>
+
+      <footer class="site-footer">
+        <p>© {year} {SITE_TITLE}</p>
+      </footer>
+    </div>
+  </body>
+</html>

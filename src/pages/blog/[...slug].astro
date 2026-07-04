@@ -1,0 +1,22 @@
+---
+// This one file generates a page for EVERY article. getStaticPaths lists all
+// articles at build time and hands each one its own URL (the file's name).
+// render() turns the markdown body into HTML, which we drop into BlogPost.
+import { getCollection, render } from 'astro:content';
+import BlogPost from '../../layouts/BlogPost.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+---
+
+<BlogPost data={post.data}>
+  <Content />
+</BlogPost>

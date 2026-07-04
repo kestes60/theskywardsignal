@@ -1,0 +1,135 @@
+:root {
+  --content-width: 42rem;
+  --ink: #1a1a1a;
+  --muted: #6b6b6b;
+  --accent: #2b5797;
+  --rule: #e5e5e5;
+  --bg: #fdfdfc;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: Georgia, 'Times New Roman', serif;
+  color: var(--ink);
+  background: var(--bg);
+  line-height: 1.65;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+}
+
+.wrap {
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: 2.5rem 1.25rem 4rem;
+}
+
+/* Site header */
+.site-header {
+  border-bottom: 1px solid var(--rule);
+  margin-bottom: 2.5rem;
+  padding-bottom: 1.25rem;
+}
+
+.site-title {
+  font-size: 1.6rem;
+  letter-spacing: 0.02em;
+  margin: 0;
+}
+
+.site-title a {
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.site-tagline {
+  color: var(--muted);
+  font-style: italic;
+  margin: 0.35rem 0 0;
+  font-size: 0.95rem;
+}
+
+/* Article list on the homepage */
+.post-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.post-list li {
+  margin-bottom: 2rem;
+}
+
+.post-list h2 {
+  font-size: 1.3rem;
+  margin: 0 0 0.25rem;
+}
+
+.post-list h2 a {
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.post-list h2 a:hover {
+  color: var(--accent);
+}
+
+.post-meta {
+  color: var(--muted);
+  font-size: 0.85rem;
+  font-family: system-ui, sans-serif;
+}
+
+.post-summary {
+  margin: 0.4rem 0 0;
+  color: #333;
+}
+
+/* Single article */
+.article-title {
+  font-size: 2rem;
+  line-height: 1.2;
+  margin: 0 0 0.5rem;
+}
+
+.article-body {
+  margin-top: 2rem;
+}
+
+.article-body img {
+  max-width: 100%;
+  height: auto;
+}
+
+.article-body h2 {
+  margin-top: 2.25rem;
+}
+
+.article-body a {
+  color: var(--accent);
+}
+
+.back-link {
+  display: inline-block;
+  margin-top: 3rem;
+  font-family: system-ui, sans-serif;
+  font-size: 0.9rem;
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.site-footer {
+  border-top: 1px solid var(--rule);
+  margin-top: 4rem;
+  padding-top: 1.25rem;
+  color: var(--muted);
+  font-size: 0.85rem;
+  font-family: system-ui, sans-serif;
+}

@@ -1,0 +1,36 @@
+---
+// The homepage. getCollection('blog') reads every markdown file in
+// src/content/blog automatically — you never edit this file when you publish.
+// We sort by publish date (newest first) and print a linked list.
+import Base from '../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog')).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+
+// Format in UTC so the date shown always matches the date typed in front-matter,
+// regardless of the timezone of the machine that builds the site.
+const dateFmt = (d: Date) =>
+  d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' });
+
+// Build a correct link for each article, respecting the /theskywardsignal/ base.
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const postUrl = (id: string) => `${base}/blog/${id}/`;
+---
+
+<Base>
+  <ul class="post-list">
+    {
+      posts.map((post) => (
+        <li>
+          <h2><a href={postUrl(post.id)}>{post.data.title}</a></h2>
+          <p class="post-meta">
+            <time datetime={post.data.pubDate.toISOString()}>{dateFmt(post.data.pubDate)}</time>
+          </p>
+          <p class="post-summary">{post.data.description}</p>
+        </li>
+      ))
+    }
+  </ul>
+</Base>
