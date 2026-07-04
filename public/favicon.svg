@@ -1,4 +1,41 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <rect width="32" height="32" rx="6" fill="#2b5797" />
-  <path d="M16 6 L19 14 L27 14 L20.5 19 L23 27 L16 22 L9 27 L11.5 19 L5 14 L13 14 Z" fill="#fdfdfc" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <radialGradient id="fav-glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffd9a3" stop-opacity="0.95" />
+      <stop offset="30%" stop-color="#f2a866" stop-opacity="0.7" />
+      <stop offset="100%" stop-color="#d67a53" stop-opacity="0" />
+    </radialGradient>
+    <radialGradient id="fav-star" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#fff4e0" stop-opacity="0.9" />
+      <stop offset="50%" stop-color="#f2a866" stop-opacity="0.25" />
+      <stop offset="100%" stop-color="#f2a866" stop-opacity="0" />
+    </radialGradient>
+    <linearGradient id="fav-horizon" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#3a2b60" stop-opacity="0" />
+      <stop offset="50%" stop-color="#ffd9a3" stop-opacity="1" />
+      <stop offset="100%" stop-color="#3a2b60" stop-opacity="0" />
+    </linearGradient>
+  </defs>
+
+  <!-- Deep twilight background so the mark reads on a browser tab -->
+  <rect width="100" height="100" rx="20" fill="#15123a" />
+
+  <!-- Sunrise glow on the horizon -->
+  <ellipse cx="50" cy="76" rx="34" ry="12" fill="url(#fav-glow)" />
+  <!-- Earth's curved horizon -->
+  <path d="M 14 78 Q 50 70 86 78" fill="none" stroke="url(#fav-horizon)" stroke-width="1.4" />
+
+  <!-- Signal dots descending toward the horizon -->
+  <g fill="#ece7f7">
+    <circle cx="50" cy="45" r="1.0" opacity="0.55" />
+    <circle cx="50" cy="51" r="1.2" opacity="0.70" />
+    <circle cx="50" cy="57" r="1.5" opacity="0.82" />
+    <circle cx="50" cy="63" r="1.8" opacity="0.92" />
+    <circle cx="50" cy="69" r="2.1" opacity="1" />
+  </g>
+
+  <!-- Guiding star -->
+  <circle cx="50" cy="30" r="14" fill="url(#fav-star)" />
+  <path d="M50 19 L51.4 28.6 L61 30 L51.4 31.4 L50 41 L48.6 31.4 L39 30 L48.6 28.6 Z" fill="#fff6e9" />
+  <circle cx="50" cy="30" r="1.5" fill="#ffffff" />
 </svg>

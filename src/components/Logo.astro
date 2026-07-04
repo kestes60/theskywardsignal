@@ -1,0 +1,84 @@
+---
+// Inline SVG logo for The Skyward Signal, recreating the reference art:
+//   - a warm sunrise glow on Earth's curved horizon
+//   - a bright multi-point guiding star at top center
+//   - a vertical "signal" of descending dots from the star to the horizon
+//   - the stacked wordmark: THE / SKYWARD / SIGNAL
+// Everything is vector, so it stays crisp from favicon-size up to a banner.
+interface Props {
+  class?: string;
+}
+const { class: className } = Astro.props;
+---
+
+<svg
+  class:list={['logo-svg', className]}
+  viewBox="0 0 600 340"
+  role="img"
+  aria-label="The Skyward Signal"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <title>The Skyward Signal</title>
+  <defs>
+    <!-- Warm sunrise glow at the center of the horizon -->
+    <radialGradient id="logo-glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffd9a3" stop-opacity="0.95" />
+      <stop offset="28%" stop-color="#f2a866" stop-opacity="0.75" />
+      <stop offset="62%" stop-color="#d67a53" stop-opacity="0.28" />
+      <stop offset="100%" stop-color="#d67a53" stop-opacity="0" />
+    </radialGradient>
+    <!-- Soft halo behind the guiding star -->
+    <radialGradient id="logo-star-glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#fff4e0" stop-opacity="0.9" />
+      <stop offset="45%" stop-color="#f2a866" stop-opacity="0.28" />
+      <stop offset="100%" stop-color="#f2a866" stop-opacity="0" />
+    </radialGradient>
+    <!-- Horizon line: fades from indigo edges to a bright amber center -->
+    <linearGradient id="logo-horizon" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#3a2b60" stop-opacity="0" />
+      <stop offset="30%" stop-color="#8f4d6e" stop-opacity="0.7" />
+      <stop offset="50%" stop-color="#ffd9a3" stop-opacity="1" />
+      <stop offset="70%" stop-color="#8f4d6e" stop-opacity="0.7" />
+      <stop offset="100%" stop-color="#3a2b60" stop-opacity="0" />
+    </linearGradient>
+  </defs>
+
+  <!-- Sunrise glow on the horizon -->
+  <ellipse cx="300" cy="173" rx="150" ry="42" fill="url(#logo-glow)" />
+
+  <!-- Earth's curved horizon -->
+  <path d="M 40 183 Q 300 160 560 183" fill="none" stroke="url(#logo-horizon)" stroke-width="1.6" />
+
+  <!-- Signal beam: dots descending from the star to the horizon, growing slightly -->
+  <g fill="#ece7f7">
+    <circle cx="300" cy="88" r="1.6" opacity="0.50" />
+    <circle cx="300" cy="100" r="1.9" opacity="0.60" />
+    <circle cx="300" cy="112" r="2.1" opacity="0.70" />
+    <circle cx="300" cy="124" r="2.4" opacity="0.80" />
+    <circle cx="300" cy="136" r="2.7" opacity="0.88" />
+    <circle cx="300" cy="148" r="3.0" opacity="0.95" />
+    <circle cx="300" cy="160" r="3.3" opacity="1" />
+  </g>
+
+  <!-- Guiding star: 8-point sparkle with a bright core -->
+  <g>
+    <circle cx="300" cy="46" r="30" fill="url(#logo-star-glow)" />
+    <path
+      d="M300 18 L303.5 42.5 L328 46 L303.5 49.5 L300 74 L296.5 49.5 L272 46 L296.5 42.5 Z"
+      fill="#fff6e9"
+    />
+    <path
+      d="M308.5 37.5 L302 46 L308.5 54.5 L300 48 L291.5 54.5 L298 46 L291.5 37.5 L300 44 Z"
+      fill="#ffe6c2"
+      opacity="0.95"
+    />
+    <circle cx="300" cy="46" r="2.6" fill="#ffffff" />
+  </g>
+
+  <!-- Wordmark -->
+  <g font-family="'Helvetica Neue', Arial, sans-serif" text-anchor="middle">
+    <text x="297" y="214" font-size="16" letter-spacing="7" fill="#d9d3ee" font-weight="400">THE</text>
+    <text x="293" y="264" font-size="56" letter-spacing="15" fill="#f5f2fb" font-weight="400">SKYWARD</text>
+    <text x="289" y="302" font-size="26" letter-spacing="21" fill="#8fb8e0" font-weight="400">SIGNAL</text>
+  </g>
+</svg>

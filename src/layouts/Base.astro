@@ -3,6 +3,7 @@
 // (with a link back home) and the footer. Individual pages fill in the
 // middle via <slot />.
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import Logo from '../components/Logo.astro';
 import '../styles/global.css';
 
 interface Props {
@@ -33,7 +34,7 @@ const year = new Date().getFullYear();
   <body>
     <div class="wrap">
       <header class="site-header">
-        <h1 class="site-title"><a href={home}>{SITE_TITLE}</a></h1>
+        <h1 class="site-title"><a href={home}><Logo class="site-logo" /></a></h1>
         <p class="site-tagline">{SITE_DESCRIPTION}</p>
       </header>
 
