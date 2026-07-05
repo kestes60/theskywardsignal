@@ -1,11 +1,10 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 
-// The site is served at https://kestes60.github.io/theskywardsignal/
-// - `site` is your GitHub Pages domain (the user/org part only).
-// - `base` is the sub-folder your project lives in on that domain.
-// Astro uses these two values to build correct links and asset URLs.
+// The site is served from the root of the custom domain theskywardsignal.com.
+// - `site` is the full public URL; it keeps canonical links and the sitemap correct.
+// - No `base` is set, so it defaults to '/' (the site root). A base prefix would
+//   double up the path on a root-served custom domain and break internal links.
 export default defineConfig({
-  site: 'https://kestes60.github.io',
-  base: '/theskywardsignal',
+  site: 'https://theskywardsignal.com',
 });
