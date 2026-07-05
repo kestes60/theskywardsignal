@@ -34,7 +34,6 @@ pubDate: 2026-07-05
 #fatigue-scope h1 .thin{font-weight:300;color:var(--muted)}
 #fatigue-scope .dek{color:var(--muted); font-size:clamp(14px,1.9vw,16px); max-width:60ch}
 #fatigue-scope .rule{height:1px;background:var(--line);margin:22px 0}
-
 #fatigue-scope .caution{
   display:flex; gap:12px; align-items:flex-start;
   border:1px solid rgba(242,168,102,.34); background:rgba(242,168,102,.07);
@@ -42,10 +41,8 @@ pubDate: 2026-07-05
 }
 #fatigue-scope .caution b{color:var(--amber)}
 #fatigue-scope .caution .ic{flex:0 0 auto;margin-top:2px;font-size:15px}
-
 #fatigue-scope .grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:8px}
 @media(max-width:760px){#fatigue-scope .grid{grid-template-columns:1fr}}
-
 #fatigue-scope .panel{
   position:relative; background:var(--panel); border:1px solid var(--line);
   border-radius:12px; padding:18px; backdrop-filter:blur(3px);
@@ -58,7 +55,6 @@ pubDate: 2026-07-05
 #fatigue-scope .p-num{font-family:ui-monospace,monospace;font-size:11px;color:var(--faint);letter-spacing:.2em}
 #fatigue-scope .p-title{font-size:18px;font-weight:650;margin:2px 0 3px}
 #fatigue-scope .p-sub{font-size:13px;color:var(--muted);margin-bottom:14px}
-
 /* scope / dropzone */
 #fatigue-scope .scope{
   position:relative; border:1px dashed rgba(236,231,247,.28); border-radius:10px;
@@ -70,7 +66,6 @@ pubDate: 2026-07-05
 #fatigue-scope .scope .hint{position:absolute;text-align:center;color:var(--faint);font-size:13px;padding:16px;pointer-events:none}
 #fatigue-scope .scope .hint .big{font-size:26px;display:block;margin-bottom:8px;color:var(--muted)}
 #fatigue-scope video{display:none}
-
 #fatigue-scope .controls{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px;align-items:center}
 #fatigue-scope button, #fatigue-scope .btn{
   font:inherit; font-size:13px; color:var(--ink); cursor:pointer;
@@ -81,18 +76,15 @@ pubDate: 2026-07-05
 #fatigue-scope button.primary{background:var(--warm);border-color:var(--warm);color:#1a1226;font-weight:600}
 #fatigue-scope button.primary:hover{background:var(--amber);border-color:var(--amber)}
 #fatigue-scope button:disabled{opacity:.4;cursor:not-allowed}
-
 #fatigue-scope .slider-row{margin-top:14px;font-size:12px;color:var(--muted)}
 #fatigue-scope .slider-row label{display:flex;justify-content:space-between;margin-bottom:6px}
 #fatigue-scope .slider-row .val{color:var(--amber);font-family:ui-monospace,monospace}
 #fatigue-scope input[type=range]{width:100%;accent-color:var(--amber)}
-
 #fatigue-scope .readout{
   margin-top:13px;font-size:12.5px;color:var(--muted);
   border-left:2px solid rgba(242,168,102,.5);padding:2px 0 2px 12px;min-height:1.5em
 }
 #fatigue-scope .readout b{color:var(--amber)}
-
 /* form */
 #fatigue-scope .field{margin-bottom:12px}
 #fatigue-scope .field label{display:block;font-size:12px;color:var(--muted);margin-bottom:5px;letter-spacing:.03em}
@@ -103,7 +95,6 @@ pubDate: 2026-07-05
 }
 #fatigue-scope select:focus,#fatigue-scope input:focus{outline:none;border-color:var(--amber)}
 #fatigue-scope .two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-
 #fatigue-scope .fleet{margin-top:6px;display:flex;flex-direction:column;gap:10px}
 #fatigue-scope .card{
   border:1px solid var(--line);border-radius:9px;padding:13px 14px;background:rgba(0,0,0,.2);font-size:13px
@@ -119,55 +110,44 @@ pubDate: 2026-07-05
 #fatigue-scope .escalate{margin-top:11px;padding-top:10px;border-top:1px solid var(--line);font-size:12.5px;color:#f6d9bd}
 #fatigue-scope .escalate b{color:var(--amber)}
 #fatigue-scope .empty{color:var(--faint);font-size:13px;font-style:italic;padding:6px 0}
-
 #fatigue-scope .foot{margin-top:20px;font-size:11px;color:var(--faint);line-height:1.6}
 </style>
-
 <div class="eyebrow">The Skyward Signal · Field Tool</div>
 <h1>Fatigue Scope <span class="thin">— what a camera can and can't tell you</span></h1>
 <p class="dek">Computer-vision crack detection is real, and it's moving fast. But a photo has hard limits a certified inspection doesn't. This tool shows you both sides — so you know when cheap screening is enough, and when it's time to pay for the real thing.</p>
-
 <div class="caution">
   <span class="ic">▲</span>
   <div><b>This is a demonstration, not an inspection.</b> Nothing here can determine whether an aircraft is airworthy. A camera sees surface marks only — it cannot see the subsurface fatigue where cracks usually begin. Certified inspection by a licensed mechanic, using proper equipment, remains required and irreplaceable. When in doubt, get the real inspection before you fly.</div>
 </div>
-
 <div class="grid">
-
   <!-- PANEL 1 -->
   <div class="panel">
     <div class="p-num">PANEL 01</div>
     <div class="p-title">See what the machine sees</div>
     <div class="p-sub">Drop in a photo of a metal surface. The scope highlights every crack-like edge it finds — watch how much else it flags too.</div>
-
     <div class="scope" id="scope">
       <div class="hint" id="hint"><span class="big">⌖</span>Tap to upload, or drop an image here</div>
       <canvas id="cv"></canvas>
     </div>
     <video id="video" playsinline></video>
     <input type="file" id="file" accept="image/*" hidden>
-
     <div class="controls">
       <button class="primary" id="pick">Upload image</button>
       <button id="cam">Use camera</button>
       <button id="snap" disabled>Capture</button>
       <button id="clear" disabled>Clear</button>
     </div>
-
     <div class="slider-row">
       <label><span>Detection sensitivity</span><span class="val" id="sensVal">medium</span></label>
       <input type="range" id="sens" min="8" max="60" value="26">
     </div>
-
     <div class="readout" id="readout">Load an image to run the edge scan.</div>
   </div>
-
   <!-- PANEL 2 -->
   <div class="panel">
     <div class="p-num">PANEL 02</div>
     <div class="p-title">When should you pay for the real thing?</div>
     <div class="p-sub">Add your aircraft to see which factors raise its fatigue exposure. This won't tell you it's safe — it points you toward the inspection.</div>
-
     <div class="field">
       <label>Aircraft type</label>
       <select id="type">
@@ -203,17 +183,14 @@ pubDate: 2026-07-05
     <div class="controls">
       <button class="primary" id="add">Add aircraft</button>
     </div>
-
     <div class="fleet" id="fleet">
       <div class="empty">No aircraft added yet.</div>
     </div>
   </div>
 </div>
-
 <div class="foot">
   Fatigue Scope is an educational demonstration published by The Skyward Signal. It performs no airworthiness assessment and is not a substitute for inspection by a certified mechanic or the maintenance requirements that apply to your aircraft. All processing happens in your browser; no image ever leaves your device.
 </div>
-
 <script>
 (function(){
   var root=document.getElementById('fatigue-scope');
@@ -222,11 +199,8 @@ pubDate: 2026-07-05
   var sens=root.querySelector('#sens'), sensVal=root.querySelector('#sensVal'), readout=root.querySelector('#readout');
   var bPick=root.querySelector('#pick'), bCam=root.querySelector('#cam'), bSnap=root.querySelector('#snap'), bClear=root.querySelector('#clear');
   var srcImg=null, stream=null;
-
   function sensLabel(v){ if(v<18)return 'low'; if(v<32)return 'medium'; if(v<46)return 'high'; return 'extreme'; }
-
   function fitDims(w,h){ var maxW=560,maxH=460,s=Math.min(maxW/w,maxH/h,1); return [Math.round(w*s),Math.round(h*s)]; }
-
   function run(){
     if(!srcImg) return;
     var d=fitDims(srcImg.width||srcImg.videoWidth, srcImg.height||srcImg.videoHeight);
@@ -262,24 +236,19 @@ pubDate: 2026-07-05
     var pct=total?Math.round(hits/total*100):0;
     readout.innerHTML='Scan complete. <b>'+pct+'% of the surface</b> lit up as a crack-like edge at '+sensLabel(sens.value)+' sensitivity. Every scratch, rivet line, paint edge, and shadow gets flagged the same as a real crack — telling them apart is exactly the trained judgment a phone can’t supply.';
   }
-
   function loadFromDataURL(url){
     var im=new Image();
     im.onload=function(){ srcImg=im; hint.style.display='none'; cv.style.display='block'; bClear.disabled=false; run(); };
     im.src=url;
   }
   function handleFile(f){ if(!f)return; var r=new FileReader(); r.onload=function(e){ loadFromDataURL(e.target.result); }; r.readAsDataURL(f); }
-
   bPick.addEventListener('click',function(){ file.click(); });
   scope.addEventListener('click',function(){ if(!srcImg && !stream) file.click(); });
   file.addEventListener('change',function(e){ handleFile(e.target.files[0]); });
-
   scope.addEventListener('dragover',function(e){ e.preventDefault(); scope.classList.add('drag'); });
   scope.addEventListener('dragleave',function(){ scope.classList.remove('drag'); });
   scope.addEventListener('drop',function(e){ e.preventDefault(); scope.classList.remove('drag'); if(e.dataTransfer.files[0]) handleFile(e.dataTransfer.files[0]); });
-
   sens.addEventListener('input',function(){ sensVal.textContent=sensLabel(sens.value); if(srcImg) run(); });
-
   bCam.addEventListener('click',function(){
     if(!navigator.mediaDevices||!navigator.mediaDevices.getUserMedia){ readout.textContent='Camera not available here — upload a photo instead. (Live camera works on the published site.)'; return; }
     navigator.mediaDevices.getUserMedia({video:{facingMode:'environment'}}).then(function(s){
@@ -291,7 +260,6 @@ pubDate: 2026-07-05
       readout.textContent='Camera live. Aim at a metal surface and press Capture.';
     }).catch(function(){ readout.textContent='Camera blocked here — upload a photo instead. (Live camera works on the published site over HTTPS.)'; });
   });
-
   bSnap.addEventListener('click',function(){
     if(!stream)return;
     var tmp=document.createElement('canvas'); tmp.width=video.videoWidth; tmp.height=video.videoHeight;
@@ -300,21 +268,17 @@ pubDate: 2026-07-05
     loadFromDataURL(tmp.toDataURL('image/jpeg'));
     bSnap.disabled=true;
   });
-
   function stopCam(){ if(stream){ stream.getTracks().forEach(function(t){t.stop();}); stream=null; } }
-
   bClear.addEventListener('click',function(){
     stopCam(); srcImg=null; ctx.clearRect(0,0,cv.width,cv.height); cv.style.display='none';
     hint.style.display='block'; bClear.disabled=true; bSnap.disabled=true;
     readout.textContent='Load an image to run the edge scan.';
   });
-
   /* ---- Panel 2: educational triage ---- */
   var typeSel=root.querySelector('#type'), ageIn=root.querySelector('#age'), cycIn=root.querySelector('#cycles'),
       missionSel=root.querySelector('#mission'), fleet=root.querySelector('#fleet');
   var list=[];
   var typeNames={'piston-single':'Light piston single','piston-twin':'Light piston twin','turboprop':'Turboprop','jet':'Light jet','rotor':'Helicopter / rotorcraft','experimental':'Experimental / homebuilt'};
-
   function factorsFor(a){
     var f=[];
     if(a.age>=25) f.push([true,'Airframe age '+a.age+' yrs — older structures have accumulated more fatigue loading over their service life.']);
@@ -331,7 +295,6 @@ pubDate: 2026-07-05
     if(!f.length) f.push([false,'No elevated factors flagged from these inputs — which is not a clean bill of health.']);
     return f;
   }
-
   function render(){
     if(!list.length){ fleet.innerHTML='<div class="empty">No aircraft added yet.</div>'; return; }
     fleet.innerHTML='';
@@ -346,7 +309,6 @@ pubDate: 2026-07-05
     });
     fleet.querySelectorAll('.rm').forEach(function(b){ b.addEventListener('click',function(){ list.splice(+b.dataset.i,1); render(); }); });
   }
-
   root.querySelector('#add').addEventListener('click',function(){
     if(!typeSel.value){ typeSel.focus(); return; }
     var a={ type:typeSel.value, name:typeNames[typeSel.value]||'Aircraft',
