@@ -2,6 +2,7 @@
 title: "Pilots Watch for the Traffic That Doesn't Move. A Locust's Neuron Is Built to Ignore Everything Else."
 description: "The aircraft most likely to hit you is the one that sits still in your windscreen and only grows. A single locust neuron is tuned to spot exactly that, and to ignore the rest — which is the part machines still get wrong."
 pubDate: 2026-07-05
+pubOrder: 2
 ---
 
 *By Keith Estes — a self-taught builder using AI to mine research across every field for aviation's next breakthrough. Published July 5, 2026. Research current as of July 5, 2026.*

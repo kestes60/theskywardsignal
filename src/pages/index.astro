@@ -1,13 +1,17 @@
 ---
 // The homepage. getCollection('blog') reads every markdown file in
 // src/content/blog automatically — you never edit this file when you publish.
-// We sort by publish date (newest first) and print a linked list.
+// We sort by publish date (newest first) and print a linked list. When two
+// posts share a pubDate, the optional `pubOrder` breaks the tie (higher = newer,
+// so it lands on top); posts without it default to 0.
 import Base from '../layouts/Base.astro';
 import { getCollection } from 'astro:content';
 
-const posts = (await getCollection('blog')).sort(
-  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
-);
+const posts = (await getCollection('blog')).sort((a, b) => {
+  const byDate = b.data.pubDate.valueOf() - a.data.pubDate.valueOf();
+  if (byDate !== 0) return byDate;
+  return (b.data.pubOrder ?? 0) - (a.data.pubOrder ?? 0);
+});
 
 // Format in UTC so the date shown always matches the date typed in front-matter,
 // regardless of the timezone of the machine that builds the site.
