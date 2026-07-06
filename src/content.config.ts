@@ -12,6 +12,9 @@ const blog = defineCollection({
     description: z.string(),
     pubDate: z.coerce.date(),
     updatedDate: z.coerce.date().optional(),
+    // Tie-breaker for posts that share a pubDate. Higher = newer, so it sorts
+    // above others from the same day. Optional: posts without it fall back to 0.
+    pubOrder: z.number().optional(),
   }),
 });
 

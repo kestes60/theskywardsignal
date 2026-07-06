@@ -2,6 +2,7 @@
 title: 'Civil Engineers Taught Cameras to Read Cracks. Small Aircraft Operators Are Still Priced Out of Looking.'
 description: "Fatigue is the failure mode that tore the roof off a 737 in flight. Civil engineers spent a decade teaching cheap cameras to find cracks in bridges and pavement; small aircraft operators still can't reach that tool."
 pubDate: 2026-07-05
+pubOrder: 1
 ---
 
 *By Keith Estes — a self-taught builder using AI to mine research across every field for aviation's next breakthrough. Published July 5, 2026. Research current as of July 4, 2026.*
